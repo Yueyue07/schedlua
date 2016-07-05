@@ -45,6 +45,7 @@ function Kernel.getCurrentTask(self)
 end
 
 function Kernel.spawn(self, prior, func, ...) -- add prior parameter to set priority of tasks
+    print(prior)
 	local task = Task(func, ...)
 	task.TaskID = self:getNewTaskID();
 	--self.Scheduler:scheduleTask(task,{...})  enqueue
