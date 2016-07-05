@@ -39,12 +39,18 @@ function Queue.new(name)
 end
 --]]
 
-function Queue:enqueue(value)
+function Queue:enqueue(prior,value)
 	--self.MyList:PushRight(value)
 	local last = self.last + 1
 	self.last = last
 	self[last] = value
+	return value
+end
 
+function Queue:prior(prior,value)
+	-- set your task in queue based on your prior index, so here queue is not FIFO queue we are using 
+	local prior = prior
+	self[prior] = value
 	return value
 end
 
