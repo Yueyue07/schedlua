@@ -14,7 +14,7 @@ local Task_mt = {
 	__index = Task,
 }
 
-function Task.init(self, aroutine, prior, ...)
+function Task.init(self, aroutine, prior, :i...)
 
 	local obj = {
 	    prio = prior
