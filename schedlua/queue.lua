@@ -39,7 +39,7 @@ function Queue.new(name)
 end
 --]]
 
-function Queue:enqueue(prior,value)
+function Queue:enqueue(value)
 	--self.MyList:PushRight(value)
 	local last = self.last + 1
 	self.last = last
