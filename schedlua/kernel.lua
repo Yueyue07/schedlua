@@ -44,10 +44,11 @@ function Kernel.getCurrentTask(self)
 	return self.Scheduler:getCurrentTask();
 end
 
-function Kernel.spawn(self, func, ...)
+function Kernel.spawn(self, prior, func, ...) -- add prior parameter to set priority of tasks
 	local task = Task(func, ...)
 	task.TaskID = self:getNewTaskID();
-	self.Scheduler:scheduleTask(task, {...});
+	--self.Scheduler:scheduleTask(task,{...})  enqueue
+	self.Scheduler:scheduleTask(prior,task, {...});
 	
 	return task;
 end
