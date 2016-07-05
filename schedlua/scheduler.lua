@@ -60,16 +60,23 @@ end
 -- metamethod implemented.
 -- The 'params' is a table of parameters which will be passed to the function
 -- when it's ready to run.
-function Scheduler.scheduleTask(self, task, params)
+function Scheduler.scheduleTask(self,prior,task, params)
 	--print("Scheduler.scheduleTask: ", task, params)
 	params = params or {}
+	prior = prior or nil
 	
 	if not task then
 		return false, "no task specified"
 	end
 
 	task:setParams(params);
-	self.TasksReadyToRun:enqueue(task);	
+	if not prior then
+	  self.TasksReadyToRun:enqueue(task);
+    end 
+    
+    if prior then
+	  self.TasksReadyToRun:prior(prior,task);	
+	end
 	task.state = "readytorun"
 
 	return task;
@@ -165,7 +172,8 @@ function Scheduler.step(self)
 	-- is if it's state is 'readytorun', otherwise, it will
 	-- stay out of the readytorun list.
 	if task.state == "readytorun" then
-		self:scheduleTask(task, results);
+	    prior = nil
+		self:scheduleTask(prior,task, results);
 	end
 end
 
