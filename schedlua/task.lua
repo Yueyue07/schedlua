@@ -14,10 +14,11 @@ local Task_mt = {
 	__index = Task,
 }
 
-function Task.init(self, aroutine, ...)
+function Task.init(self, aroutine, prior, ...)
 
 	local obj = {
-		routine = coroutine.create(aroutine), 
+	    prio = prior
+		routine = coroutine.create(aroutine)
 	}
 	setmetatable(obj, Task_mt);
 	
