@@ -17,7 +17,7 @@ local Task_mt = {
 function Task.init(self, aroutine, prior, :i...)
 
 	local obj = {
-	    prio = prior
+	    prio = prior or nil
 		routine = coroutine.create(aroutine)
 	}
 	setmetatable(obj, Task_mt);
