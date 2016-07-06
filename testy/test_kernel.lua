@@ -39,8 +39,8 @@ end
 
 local function main()
 	--local t0 = spawn(counter, "counter1", 5)
-	local t1 = spawn(1,task1)
-	local t2 = spawn(0,task2)
+	local t1 = spawnPrior(task1,1)
+	local t2 = spawnPrior(task2,2)
 	--local t3 = spawn(counter, "counter2", 7)
 end
 

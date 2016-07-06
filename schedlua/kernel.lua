@@ -157,6 +157,7 @@ function Kernel.globalize()
     signalOne = Functor(Kernel.signalOne, Kernel);
 
     spawn = Functor(Kernel.spawn, Kernel);
+    spawn = Functor(Kernel.spawnPrior,Kernel);
     suspend = Functor(Kernel.suspend, Kernel);
 
     waitForSignal = Functor(Kernel.waitForSignal, Kernel);
